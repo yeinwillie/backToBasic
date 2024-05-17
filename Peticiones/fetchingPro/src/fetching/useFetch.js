@@ -92,3 +92,28 @@ export function useFetch(url) {
 
 //return () => abortController.abort(); es una funcion de limpieza del useEffect que nos permite retornar una funcion 
 // la funcion abort() se ejecuta cuando el componente se destruye, elimina los setlistener, setinterval, timeout
+
+// codigo para el abort solo cuando el usuario cierra la pagina  (probar por que lo hice solo con el boton)
+
+// useEffect(() => {
+//     const abortController = new AbortController();
+
+//     setLoading(true);
+//     fetch(url, { signal: abortController.signal })
+//       .then((Response) => Response.json())
+//       .then((data) => {
+//         setData(data);
+//       })
+//       .catch((error) => {
+
+//             setError(error);
+        
+        
+//       })
+//       .finally(() => setLoading(false));
+
+//       return () => abortController.abort();
+//   }, []);
+
+
+//   return { data, loading, error };
