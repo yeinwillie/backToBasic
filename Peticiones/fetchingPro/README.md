@@ -19,5 +19,11 @@ Practica de fetching a varias API, la idea adcional a practicar es probar un par
 
 * Cuando se manejen efectos secundarios como eventos u otros y tener experiencias mas fluidas de usuario puede resultar en una combinacion de ambos metodos
 
+## Por revisar
+
+* No se manejaron los estados globales en suspense, tal vez con react query
+* Habria que hacer pruebas y buscar soluciones para los estados locales, tal vez, react cache u otro
+* Probar promise all y all settled
+
 
 | Front-end  | Yein España  | [![linkedin]](https://www.linkedin.com/in/yein-e-734a7a233/)  |
