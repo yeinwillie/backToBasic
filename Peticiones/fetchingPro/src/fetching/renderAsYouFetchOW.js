@@ -21,13 +21,14 @@ function getSuspenderOw (promise){
         switch (status) {  // se utiliza un switch en vez de ternario porque este ultimo no trabaja directamente con throw
             case "pending":
                 throw suspender;  // vuelve a llamar a suspender e intenta resolver de nuevo la promesa
-            case "error":
-                throw response;
+            case "error":         // debe ser throw porque es lo que espera el suspender, si se coloca return se rompe la logica
+                throw response; // throw igual para que lo maneje como error el suspense
             default: 
-                return response;
+                return response; // return para el caso exitoso, semanticamente correcto, sino lo peudes manejar como error u otro
         }
     };
-    return {read}; 
+    return { read };  // permite encapsular mas data, es buena practica, pero pendiente que ahora esta contenido en 
+                    // apiDataOW.read() y no solo en apiDataOW().
 
 };
 
@@ -41,9 +42,13 @@ export function renderAsYouFetchOW(url){
         }
     };
 
-    const promise = fetch(url, options)  // el fetch se guarda en la promesa para que se resuelva en getSuspenderOw
+    
+    const promise =
+     fetch(url, options)  // el fetch se guarda en la promesa para que se resuelva en getSuspenderOw
     .then((response) => response.json())
-    .then(data => data);
+    .then(data =>  
+       
+        data);
 
     return getSuspenderOw(promise);  // se envia la promesa armada
 
